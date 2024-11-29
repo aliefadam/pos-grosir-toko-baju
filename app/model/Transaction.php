@@ -53,6 +53,7 @@ class Transaction
         for ($month = 1; $month <= 12; $month++) {
             $startDate = "$year-$month-01";
             $endDate = date("Y-m-t", strtotime($startDate));
+            $endDate = "$endDate 23:59:59";
 
             $result = $conn->query("
             SELECT SUM(total) AS total 
