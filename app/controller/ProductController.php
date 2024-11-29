@@ -12,6 +12,10 @@ class ProductController
     public function store($request)
     {
         try {
+            if ($request["stock"] <= 0) {
+                throw new Exception("Stock harus lebih besar dari 0");
+            }
+
             $product = new Product();
             $product->create([
                 "name" => $request["name"],

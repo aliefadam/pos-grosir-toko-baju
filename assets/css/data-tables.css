@@ -36,3 +36,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
+#dataTable_wrapper .dataTables_empty {
+  text-align: center;
+}

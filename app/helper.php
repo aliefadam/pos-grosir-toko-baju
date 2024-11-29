@@ -54,6 +54,9 @@ function setNotification($title, $text, $icon)
 
 function formatMoney($number)
 {
+    if ($number == null) {
+        return "Rp. 0";
+    }
     return "Rp. " . number_format($number, 0, ',', '.');
 }
 
@@ -63,4 +66,13 @@ function getTitle()
     $path = explode("/", $url['path']);
     $title = $path[3];
     return ucwords($title);
+}
+
+function isActiveSideBar($currentPage)
+{
+    $url = parse_url($_SERVER['REQUEST_URI']);
+    if ($url['path'] == "/view/pages/{$currentPage}/index.php") {
+        return "active";
+    }
+    return "";
 }

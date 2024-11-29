@@ -7,13 +7,12 @@
          <div class="sidebar-brand-text mx-3">POS Admin</div>
      </a>
 
-     <?php $url = parse_url($_SERVER['REQUEST_URI']); ?>
 
      <!-- Divider -->
      <hr class="sidebar-divider my-0">
 
      <!-- Nav Item - Dashboard -->
-     <li class="nav-item <?= $url['path'] == "/view/pages/dashboard/index.php" ? "active" : "" ?>">
+     <li class="nav-item <?= isActiveSideBar("dashboard") ?>">
          <a class="nav-link" href="<?= view_asset("dashboard/index.php") ?>">
              <i class="fas fa-fw fa-tachometer-alt"></i>
              <span>Dashboard</span>
@@ -29,14 +28,14 @@
      </div>
 
      <!-- Nav Item - Charts -->
-     <li class="nav-item <?= $url['path'] == "/view/pages/baju/index.php" ? "active" : "" ?>">
+     <li class="nav-item <?= isActiveSideBar("baju") ?>">
          <a class="nav-link" href="<?= view_asset("baju/index.php") ?>">
              <i class="fa-solid fa-shirt"></i>
              <span>Baju</span>
          </a>
      </li>
 
-     <li class="nav-item <?= $url['path'] == "/view/pages/category/index.php" ? "active" : "" ?>">
+     <li class="nav-item <?= isActiveSideBar("category") ?>">
          <a class="nav-link" href="<?= view_asset("category/index.php") ?>">
              <i class="fa-solid fa-tag"></i>
              <span>Kategori</span>
@@ -51,7 +50,7 @@
          Stok
      </div>
 
-     <li class="nav-item <?= $url['path'] == "/view/pages/stock/index.php" ? "active" : "" ?>">
+     <li class="nav-item <?= isActiveSideBar("stock") ?>">
          <a class="nav-link" href="<?= view_asset("stock/index.php") ?>">
              <i class="fa-solid fa-boxes-stacked"></i>
              <span>Stok Barang</span>
@@ -66,7 +65,7 @@
          Transaksi
      </div>
 
-     <li class="nav-item <?= $url['path'] == "/view/pages/transaction/index.php" ? "active" : "" ?>">
+     <li class="nav-item <?= isActiveSideBar("transaction") ?>">
          <a class="nav-link" href="<?= view_asset("transaction/index.php") ?>">
              <i class="fa-solid fa-money-simple-from-bracket"></i>
              <span>Penjualan</span></a>

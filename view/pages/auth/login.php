@@ -2,7 +2,9 @@
 
 <div class="login-content">
     <div class="login-card shadow shadow-md">
-        <h1 class="h2 text-gray-900 mb-4">LOGIN POS</h1>
+        <h1 class="h2 text-gray-900 mb-4">
+            <i class="fa-solid fa-cash-register mr-2"></i> LOGIN POS
+        </h1>
 
         <form action="<?= routing_asset() ?>" method="POST">
             <div class="form-group">
