@@ -33,6 +33,17 @@ class User
         ];
     }
 
+    public function register($credentials)
+    {
+        $name = $credentials["name"];
+        $email = $credentials["email"];
+        $password = password_hash($credentials["password"], PASSWORD_DEFAULT);
+        $role = $credentials["role"];
+
+        $conn = new Database();
+        return $conn->query("INSERT INTO users (name, email, password, role) VALUES ('$name', '$email', '$password', '$role')");
+    }
+
     public static function logout()
     {
         unset($_SESSION["login"]);

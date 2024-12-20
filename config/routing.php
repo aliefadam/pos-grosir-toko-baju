@@ -12,6 +12,11 @@ if (isset($_POST["login"])) {
     $auth->login($_POST);
 }
 
+if (isset($_POST["register"])) {
+    $auth = new AuthController();
+    $auth->register($_POST);
+}
+
 if (isset($_POST["create-product"])) {
     $product = new ProductController();
     $product->store($_POST);

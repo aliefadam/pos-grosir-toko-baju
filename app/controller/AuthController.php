@@ -27,6 +27,28 @@ class AuthController
         }
     }
 
+    public function register($request)
+    {
+        $user = new User();
+        $credentials = [
+            "name" => $request["name"],
+            "email" => $request["email"],
+            "password" => $request["password"],
+            "role" => "admin",
+        ];
+
+        try {
+            $user->register($credentials);
+            setNotification("Berhasil", "Akun Berhasil dibuat, silahkan login", "success");
+            redirect("dashboard/index.php");
+            exit;
+        } catch (Exception $e) {
+            setNotification("Gagal", $e->getMessage(), "error");
+            redirect("auth/register.php");
+            exit;
+        }
+    }
+
     public function changePassword($request)
     {
         try {

@@ -17,11 +17,13 @@ class ProductController
             }
 
             $product = new Product();
+            $imageName = $product->storeFile($_FILES["foto"]);
             $product->create([
                 "name" => $request["name"],
                 "category" => $request["category"],
                 "stock" => $request["stock"],
                 "price" => $request["price"],
+                "image" => $imageName,
             ]);
             setNotification("Berhasil", "Produk berhasil ditambahkan", "success");
         } catch (Exception $e) {
@@ -36,11 +38,21 @@ class ProductController
     {
         try {
             $product = new Product();
-            $product->update($request["id"], [
-                "name" => $request["name"],
-                "category" => $request["category"],
-                "price" => $request["price"],
-            ]);
+            if ($_FILES["foto"]) {
+                $imageName = $product->storeFile($_FILES["foto"]);
+                $product->updateWithImage($request["id"], [
+                    "name" => $request["name"],
+                    "category" => $request["category"],
+                    "price" => $request["price"],
+                    "image" => $imageName,
+                ]);
+            } else {
+                $product->update($request["id"], [
+                    "name" => $request["name"],
+                    "category" => $request["category"],
+                    "price" => $request["price"],
+                ]);
+            }
             setNotification("Berhasil", "Produk berhasil diubah", "success");
         } catch (Exception $e) {
             setNotification("Gagal", $e->getMessage(), "error");

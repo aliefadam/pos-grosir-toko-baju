@@ -32,6 +32,7 @@
                             <th>Kategori</th>
                             <th>Stok</th>
                             <th>Harga</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -43,6 +44,9 @@
                                 <td><?= $product["category_name"] ?></td>
                                 <td><?= $product["stock"] ?></td>
                                 <td><?= formatMoney($product["price"]) ?></td>
+                                <td>
+                                    <img style="width: 100px; height: 100px; object-fit: cover" src="../../../upload/<?= $product["image"] ?>" alt="">
+                                </td>
                                 <td>
                                     <button data-toggle="modal" data-target="#editBajuModal-<?= $number + 1 ?>" type="button" class="btn-edit btn btn-warning btn-sm">Edit</button>
                                     <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" href="<?= routing_asset("delete-product", $product["id"]) ?>" class="btn btn-danger btn-sm">Hapus</a>
@@ -59,7 +63,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form action="<?= routing_asset() ?>" method="POST">
+                                        <form action="<?= routing_asset() ?>" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="id" value="<?= $product["id"] ?>">
 
                                             <div class="modal-body">
@@ -84,6 +88,13 @@
                                                     <input value="<?= $product["price"] ?>" type="number" class="form-control" id="price" name="price" required>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label for="foto">Foto</label>
+                                                    <div class="mb-3">
+                                                        <img style="width: 100px; height: 100px; object-fit: cover" src="../../../upload/<?= $product["image"] ?>" alt="">
+                                                    </div>
+                                                    <input type="file" class="form-control-file" id="foto" name="foto">
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
@@ -110,7 +121,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= routing_asset() ?>" method="POST">
+                <form action="<?= routing_asset() ?>" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Nama Baju</label>
@@ -136,6 +147,11 @@
                         <div class="form-group">
                             <label for="price">Harga</label>
                             <input type="number" class="form-control" id="price" name="price" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" class="form-control-file" id="foto" name="foto">
                         </div>
 
                     </div>

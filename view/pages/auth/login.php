@@ -28,6 +28,9 @@
                 </button>
             </div>
         </form>
+        <div class="mt-4">
+            <a href="register.php" class="text-black text-center d-block">Buat akun baru?</a>
+        </div>
     </div>
 </div>
 

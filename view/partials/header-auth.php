@@ -67,4 +67,4 @@
 
 <body class="bg-gradient-primary">
 
-    <?php require_once "../../components/notification.php" ?>
+    <?php require_once  __DIR__ . "/../components/notification.php" ?>
